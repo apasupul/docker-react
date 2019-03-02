@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run apasupul/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "Docker_apasupul"
+  env: "DockerApasupul-env"
+  bucket_name: "elasticbeanstalk-us-east-1-724190275674"
+  buckt_path: "Docker_apasupul"
+  on:
+    branch: master
+  access_key_id: $AWS_ACESS_KEY
+  secret_acess_key:
+    secure: "$AWS_SECRET_KEY"
